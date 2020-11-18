@@ -1,2 +1,8 @@
 # vue-draggable-chart
-基于vue-draggable的拖动编辑自定义chart图页面。根据定义好的chart图例 自由组合页面 自定义每个chart的图形大小及图形数据源
+基于vuedraggable的拖动编辑自定义chart图页面。根据定义好的chart图例 自由组合页面 自定义每个chart的图形大小及图形数据源
+
+图例分布局用图例和组件图例
+添加一行后 在行内添加具体图例 可自由拖动大小和行高
+示例使用图片代替真实chart图 也可使用真实chart图
+
+预览demo使用echarts

@@ -190,65 +190,17 @@ export default {
                     type: 'container',
                     title: '添加一行',
                     height: minHeight,
-                    // widths: [],
-                    children: [
-                        // {
-                        //     title: '折线图',
-                        //     type: 'line',
-                        //     width: 100
-                        // }
-                    ]
+                    children: []
                 }
             ],
-            rowList2: [ // 图表示例ku
+            rowList2: [ // 图表示例库
                 {
                     title: '饼图',
                     type: 'pie',
                     width: minItemWidth,
                     optionsData: undefined,
                     dataSource: 0,
-                    chartType: 'PieChart',
-                    option: {
-                        title: {
-                            text: '饼图',
-                            textStyle: {
-                                color: '#909399'
-                            },
-                            left: 'center',
-                            top: '10'
-                        },
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: '{a} <br/>{b} : {c} ({d}%)'
-                        },
-                        legend: {
-                            orient: 'vertical',
-                            left: 'left',
-                            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-                        },
-                        series: [
-                            {
-                                name: '访问来源',
-                                type: 'pie',
-                                radius: '55%',
-                                center: ['50%', '60%'],
-                                data: [
-                                    {value: 335, name: '直接访问'},
-                                    {value: 310, name: '邮件营销'},
-                                    {value: 234, name: '联盟广告'},
-                                    {value: 135, name: '视频广告'},
-                                    {value: 1548, name: '搜索引擎'}
-                                ],
-                                emphasis: {
-                                    itemStyle: {
-                                        shadowBlur: 10,
-                                        shadowOffsetX: 0,
-                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                    }
-                                }
-                            }
-                        ]
-                    }
+                    chartType: 'PieChart'
                 },
                 {
                     title: '柱状图',
@@ -256,52 +208,7 @@ export default {
                     width: minItemWidth,
                     optionsData: undefined,
                     dataSource: 0,
-                    chartType: 'BarChart',
-                    option: {
-                        color: ['#3398DB'],
-                        title: {
-                            text: '柱状图',
-                            textStyle: {
-                                color: '#909399'
-                            },
-                            left: '40',
-                            top: '10'
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-                            }
-                        },
-                        grid: {
-                            left: '3%',
-                            right: '4%',
-                            bottom: '3%',
-                            containLabel: true
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                                axisTick: {
-                                    alignWithLabel: true
-                                }
-                            }
-                        ],
-                        yAxis: [
-                            {
-                                type: 'value'
-                            }
-                        ],
-                        series: [
-                            {
-                                name: '直接访问',
-                                type: 'bar',
-                                barWidth: '60%',
-                                data: [10, 52, 200, 334, 390, 330, 220]
-                            }
-                        ]
-                    }
+                    chartType: 'BarChart'
                 },
                 {
                     title: '折线图',
@@ -309,62 +216,11 @@ export default {
                     width: minItemWidth,
                     optionsData: undefined,
                     dataSource: 0,
-                    chartType: 'LineChart',
-                    option: {
-                        title: {
-                            text: '折线图',
-                            textStyle: {
-                                color: '#909399'
-                            },
-                            left: '40',
-                            top: '10'
-                        },
-                        xAxis: {
-                            type: 'category',
-                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                        },
-                        yAxis: {
-                            type: 'value'
-                        },
-                        series: [{
-                            data: [820, 932, 901, 934, 1290, 1330, 1320],
-                            type: 'line'
-                        }]
-                    }
+                    chartType: 'LineChart'
                 }
             ],
-            rowList: [// 当前自定义图表数据
-                // {
-                //     index: 1,
-                //     children: [
-                //         {
-                //             title: 'item 1'
-                //         }
-                //     ]
-                // },
-                // {
-                //     index: 2,
-                //     children: [
-                //         {
-                //             title: 'item 2'
-                //         },
-                //         {
-                //             title: 'item 3'
-                //         }
-                //     ]
-                // },
-                // {
-                //     index: 3,
-                //     children: [
-                //         {
-                //             title: 'item 4'
-                //         },
-                //         {
-                //             title: 'item 5'
-                //         }
-                //     ]
-                // }
-            ],
+            // 当前自定义图表数据
+            rowList: [],
             movingContainer: false, // 行高拖动状态
             movingItem: false, // 行内chart拖动状态
             itemConfig: { // chart配置项
@@ -394,22 +250,6 @@ export default {
             // 页面dom未blur 仍会触发drag事件 遮罩层失效)
             return this.isDragContainer || this.isDragItem;
         }
-    },
-    watch: {
-        // rowList2: {
-        //     handler (val) {
-        //         console.log('rowList2');
-        //         console.log(val);
-        //     },
-        //     deep: true
-        // },
-        // rowList: {
-        //     handler (val) {
-        //         console.log('rowList');
-        //         console.log(val);
-        //     },
-        //     deep: true
-        // }
     },
     mounted () {
         document.onmouseup = this.moveContainerEnd; // 全局监听移除拖动中状态 mouseup后还原 moving状态控制 遮罩层控制状态等的数据
@@ -453,7 +293,6 @@ export default {
             window.open(routeData.href, '_blank');
         },
         handleItem (item) { // 单个chart配置项抽屉
-            // console.log(item);
             this.itemConfig = item;
             this.drawer = true;
         },
@@ -482,51 +321,6 @@ export default {
                 });
             };
         },
-        // moveContentItem ($evt, index, idx) {
-        //     this.movingItem = true;
-        //     console.log('downR');
-        //     let rowchildren = $utils.deepClone(this.rowList[index].children);
-        //     if (rowchildren.length < 2) {
-        //         this.movingItem = false;
-        //         return;
-        //     }
-        //     let rowList = $utils.deepClone(this.rowList);
-        //     let movingDistance = 0;
-        //     const startX = $evt.pageX;
-        //     const containerWidth = this.$refs[`contentContainer${index}`][0].clientWidth;
-        //     const itemWidthStart = this.rowList[index].children[idx].width;
-        //     const percentWidthStart = containerWidth - itemWidthStart;
-        //     const itemWidthMax = containerWidth - ((rowchildren.length - 1) * minItemWidth);
-        //     document.onmousemove = (ev) => {
-        //         let $event = ev || event;
-        //         movingDistance = $event.pageX - startX;
-        //         let itemWidthNow = Math.floor((itemWidthStart + movingDistance).toFixed(2) * 1);
-        //         if (itemWidthNow > itemWidthMax) return;
-        //         itemWidthNow = itemWidthNow > minItemWidth ? itemWidthNow : minItemWidth;
-        //         rowchildren[idx].width = itemWidthNow;
-        //         let percentWidth = containerWidth - itemWidthNow;
-        //         // if (percentRemaining < percentRemainingMin) {
-        //         //     percentRemaining = percentRemainingMin;
-        //         //     rowchildren[idx].width = 100 - percentRemainingMin;
-        //         // } else {
-        //         //     // rowchildren[idx].width = Math.floor(itemWidthNow1);
-        //         // }
-        //         rowList[index].children = rowchildren.reduce((list, val, i) => {
-        //             const v = {...val};
-        //             if (i !== idx) {
-        //                 const width = Math.floor(v.width * percentWidth / percentWidthStart);
-        //                 v.width = width > minItemWidth ? width : minItemWidth;
-        //             } else {
-        //                 v.width = itemWidthNow;
-        //             }
-        //             list.push(v);
-        //             return list;
-        //         }, []);
-        //         this.$nextTick(() => {
-        //             this.rowList = rowList;
-        //         });
-        //     };
-        // },
         moveContentItem ($evt, index, idx) { // 调整chart宽度
             this.movingItem = true; // 遮罩层控制显示
             this.rowIndex = index; // 记录当前触发操作的行对应数据下标 操作结束后 根据宽度的绝对值像素 计算百分占比
@@ -546,13 +340,6 @@ export default {
                 } else {
                     return; // 不再限制宽度范围内直接返回
                 }
-                // } else if (widthNow < minItemWidth) {
-                //     widthNowNext = widthNowNext - minItemWidth + widthNow;
-                //     widthNow = 200;
-                // } else if (widthNowNext < minItemWidth) {
-                //     widthNow = widthNow - minItemWidth + widthNowNext;
-                //     widthNowNext = 200;
-                // }
                 rowList[index].children = rowchildren; // 更新备份数据
                 this.$nextTick(() => {
                     this.rowList = rowList; // 更新数据 触发视图更新
@@ -560,11 +347,9 @@ export default {
             };
         },
         moveContainerEnd () { // 移除moving状态 释放全局onmousemove
-            // console.log('up');
             if (this.movingItem && this.rowIndex > -1) { // 行内chart 拖动改变宽度后计算当前行内各chart宽度占比
                 const row = $utils.deepClone(this.rowList[this.rowIndex]);
                 this.rowList[this.rowIndex] = this.calcChartItemWidth(row, this.rowIndex);
-                // console.log(this.rowList);
             }
             this.movingItem = false; // 遮罩层隐藏
             this.isDragItem = false; // 解除drag禁用
@@ -594,12 +379,6 @@ export default {
             const row = $utils.deepClone(rowList[index]);
             const rowWidth = document.getElementById(`contentRow${index}`).clientWidth;
             const len = row.children.length;
-            // const itemWidth = rowWidth / len;
-            // row.widths = row.children.reduce((list, v, idx) => {
-            //     list.push(itemWidth * (++idx) - 10);
-            //     return list;
-            // }, []);
-            // rowList[index] = row;
             rowList[index].children.map((item) => {
                 item.width = Math.floor((rowWidth / len).toFixed(2) * 100) / 100 - marginCount;
                 item.widthPer = ((item.width + marginCount) / rowWidth).toFixed(2) * 100;
@@ -627,7 +406,6 @@ export default {
             }, []);
         },
         addElementItem1 (e, originalEvent) { // 行之间元素移动 元素库clone元素 重新计算行内chart宽度 均分
-            // console.log(e);
             if (this.isMove) return;
             if (e.from.id === e.to.id) return;
             if (e.from.id === 'elementWrapper') { // 从元素库clone
@@ -643,17 +421,14 @@ export default {
             }
         },
         addRow (e) { // 行drag add事件 clone添加数据 drag库默认复用数据 改变元素库数据状态 拷贝生成新数据 防重复引用数据污染
-            console.log(e);
             if (this.isMove) return;
             this.rowList = $utils.deepClone(this.rowList);
         },
         addElementItem (e, originalEvent) { // 行内chart的drag组件move事件 拦截行内chart超出最大数量后不再允许添加
-            // console.log(e);
             if (this.isMove) return;
             return !(e.relatedContext.list.length >= maxRowCount && e.to.id !== e.from.id);
         },
         addElement (e, originalEvent) { // drag库的move事件 行内chart超出最大数量后不再允许添加
-            // console.log(e);
             if (this.isMove) return false;
             return !(e.to.className === 'content-row' && e.relatedContext.list.length >= maxRowCount);
         }
